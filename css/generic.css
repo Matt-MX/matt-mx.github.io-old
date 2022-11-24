@@ -1,0 +1,30 @@
+
+#info {
+    flex-direction: column;
+    position: relative;
+    color: white;
+    font-size: clamp(3rem, 8vw, 2rem);
+    font-family: "Minecraftia", serif;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    margin-left: clamp(4rem, 20vw, 48rem);
+    margin-right: clamp(4rem, 20vw, 48rem);
+    flex-wrap: wrap;
+    align-content: center;
+    z-index: 222;
+    overflow: visible;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+#title:hover {
+    cursor: pointer;
+}
+
+#title:hover > a::before {
+    content: "< ";
+}

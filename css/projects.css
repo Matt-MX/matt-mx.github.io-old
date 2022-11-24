@@ -1,0 +1,118 @@
+:root {
+    --project-background: rgba(20, 20, 20);
+    --project-border-rad: 5px
+}
+
+.projects {
+    flex: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    height: calc(100% - 300px);
+    position: relative;
+    overflow: auto;
+}
+
+.projects::-webkit-scrollbar {
+    width: 8px;
+}
+
+.projects::-webkit-scrollbar-corner {
+    display: none;
+}
+
+.projects::-webkit-scrollbar-thumb {
+    background: var(--background);
+    box-shadow: 3px 2px var(--project-background);
+}
+
+.projects::-webkit-scrollbar-thumb:hover {
+    background: var(--project-background)
+}
+
+.project {
+    flex: 1 0 calc(50% - 20px);
+    margin: 10px;
+    width: 50vw;
+    height: 200px;
+    background-color: var(--background);
+    border: var(--project-border-rad) solid var(--project-background);
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    transition: transform 300ms ease;
+}
+
+.project:hover {
+    transform: scale(1.03);
+    z-index: 100;
+}
+
+.project img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform-origin: center;
+    transition: opacity 400ms ease, transform 400ms ease-in-out;
+    opacity: 1;
+}
+
+.project .more {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: calc(100% - clamp(3rem, 1vh, 10vh));
+    max-height: 150px;
+    max-width: 90%;
+    overflow: scroll;
+    font-size: 1rem;
+    margin: 0px 10px 0px 10px;
+    opacity: 0;
+    transition: opacity 400ms ease;
+}
+
+.project:hover .more {
+    opacity: 1;
+}
+
+.project:hover img {
+    opacity: 0.2;
+    transform: scale(1.1);
+}
+
+.project .info {
+    position: absolute;
+    top: calc(100%);
+    width: 100%;
+    height: clamp(3rem, 1vh, 10vh);
+    background-color: var(--background);
+    border-top: var(--project-border-rad) solid var(--project-background);
+    transform: translateY(-97%);
+    vertical-align: middle;
+}
+
+.project .info.linked {
+    cursor: pointer;
+}
+
+.project h3 {
+    font-family: "MinecraftTitle";
+}
+
+.project .info.linked:hover > h3::after {
+    content: " >"
+}
+
+.project .info > h3 {
+    position: absolute;
+    top: 0;
+    margin: 0 0 0 10;
+    font-size: 1.5rem;
+    transform: translateY(50%);
+}
+
+hr {
+    position: relative;
+    opacity: 0;
+    width: 100%;
+}

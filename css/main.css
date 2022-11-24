@@ -1,0 +1,150 @@
+
+@font-face {
+    font-family: "Minecraftia";
+    src: url("../assets/font/Minecratia.ttf");
+}
+
+@font-face {
+    font-family: "MinecraftTitle";
+    src: url("../assets//font/MinecraftFifty-Solid.otf");
+}
+
+:root {
+    --background: rgb(17, 17, 17);
+    --highlight: rgb(134, 8, 39);
+}
+
+body {
+    background-color: var(--background);
+    margin: 0px;
+    overflow: hidden;
+    user-select: none;
+}
+
+#me {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: clamp(3rem, 50vw, 50vh);
+    transform: translateY(-50%);
+    transition: transform 800ms ease, opacity 800ms ease;
+    z-index: 1;
+    opacity: 0.7;
+}
+
+#me > img {
+    width: 100%;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+
+#menu {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.menu-item {
+    color: white;
+    font-size: clamp(3rem, 8vw, 8rem);
+    font-family: "Minecraftia", serif;
+    display: block;
+    text-decoration: none;
+    padding: clamp(0.25rem, 0.5vw, 1rem) 0rem;
+    margin: 0;
+    cursor: pointer;
+}
+
+#menu-items {
+    margin-left: clamp(4rem, 20vw, 48rem);
+    position: relative;
+    z-index: 2;
+}
+
+#menu-items:hover > .menu-item {
+    opacity: 0.3;
+}
+
+#menu-items:hover > .menu-item:hover {
+    opacity: 1;
+    transform: translateX(10px) scale(1.1);
+    transform-origin: center;
+    transition: transform 800ms ease;
+}
+
+#menu-items:hover > .menu-item:hover::after {
+    content: " >";
+}
+
+#menu-background {
+    height: 100vh;
+    width: 100vw;
+
+    background-image: radial-gradient(
+        rgba(255, 255, 255, 0.1) 9%,
+        transparent 9%
+    );
+    background-position: 0% 0%;
+    background-size: 10vmin 10vmin;
+
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 1;
+
+    transition: background-position 800ms ease,
+        opacity 800ms ease,
+        background-size 800ms ease;
+}
+
+#menu-items:hover ~ #menu-background {
+    background-size: 11vmin 11vmin;
+    opacity: 0.5;
+}
+
+#menu-items:hover ~ #me {
+    opacity: 0.5;
+}
+
+#menu-items:hover ~ #me > img {
+    transform: scale(0.9);
+}
+
+#menu-items ~ #me > img {
+    transition: transform 800ms ease;
+}
+
+@keyframes PageLoadTransition {
+    from {
+        width: 100%;
+    } to {
+        width: 0%;
+    }
+}
+
+#menu[data-active-index = "0"] > #menu-background {
+    background-position: 0% -25%;
+}
+#menu[data-active-index = "1"] > #menu-background {
+    background-position: 0% -50%;
+}
+#menu[data-active-index = "2"] > #menu-background {
+    background-position: 0% -75%;
+}
+#menu[data-active-index = "3"] > #menu-background {
+    background-position: 0% -100%;
+}
+
+#menu[data-active-index = "0"] > #me {
+    transform: translateY(-55%);
+}
+#menu[data-active-index = "1"] > #me {
+    transform: translateY(-60%);
+}
+#menu[data-active-index = "2"] > #me {
+    transform: translateY(-65%);
+}
+#menu[data-active-index = "3"] > #me {
+    transform: translateY(-70%);
+}
